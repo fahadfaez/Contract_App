@@ -11,16 +11,6 @@ import './styles/styles.scss';
 
 const store = configureStore()
 
-store.dispatch(addContract({name: '1- first contract',amount : 700, date : 1}));
-store.dispatch(addContract({name: '2- second contract',amount : 1000, date : 2}));
-store.dispatch(addContract({name: '3- Third contract',amount : 500, date : 3}));
-
-const state = store.getState()
-const visibleContracts = getVisibleContracts(state.contracts ,state.filters)
-console.log(visibleContracts)
-
-
-
 const jsx = (
   <Provider store ={store}>
      <AppRouter />
