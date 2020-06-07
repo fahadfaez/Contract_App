@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "serve": "live-server public/",
-    "build": "webpack",
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
     "test": "jest"
   },
@@ -22,24 +23,27 @@
     "jest": "^20.0.4",
     "jest-cli": "^20.0.4",
     "live-server": "^1.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "moment": "2.18.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.14.1",
     "normalize.css": "7.0.0",
     "raf": "3.3.2",
-    "react": "15.6.1",
-    "react-addons-shallow-compare": "15.6.0",
-    "react-dates": "12.3.0",
-    "react-dom": "15.6.1",
-    "react-modal": "2.2.2",
-    "react-redux": "5.0.5",
-    "react-router-dom": "^4.2.2",
+    "react": "^16.13.1",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-dates": "^12.3.0",
+    "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
     "react-test-renderer": "15.6.1",
-    "redux": "^3.7.2",
+    "redux": "^4.0.5",
     "sass-loader": "6.0.6",
     "style-loader": "0.18.2",
-    "uuid": "^3.1.0",
-    "validator": "8.0.0",
-    "webpack": "3.1.0",
-    "webpack-dev-server": "2.5.1"
+    "uuid": "^8.1.0",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.11"
   }
 }

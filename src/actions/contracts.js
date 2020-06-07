@@ -1,5 +1,5 @@
 // This file is for the actions generators for the contracts
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 // Function to Add Contract
 export const addContract = ({
@@ -11,7 +11,7 @@ export const addContract = ({
 }={})=>({
 type : 'ADD_CONTRACT',
 contracts:{
-    id: uuid() ,
+    id: uuidv4() ,
     name,
     date,
     amount,

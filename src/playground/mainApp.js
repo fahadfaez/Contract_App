@@ -1,5 +1,5 @@
 import { createStore, combineReducers} from 'redux'
-import uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 // Function to Add Contract
 const addContract = ({
@@ -11,7 +11,7 @@ const addContract = ({
     }={})=>({
     type : 'ADD_CONTRACT',
     contracts:{
-        id: uuid() ,
+        id: uuidv4() ,
         name,
         date,
         amount,
