@@ -10,5 +10,6 @@ test('Should render Header Correctly',() => {
 
     const renderer = new ShallowRenderer()
     renderer.render(<Header />)
-    expect(renderer.getRenderOutput()).toMatchSnapshot()
+    const result = renderer.getRenderOutput()
+    expect(result).toMatchSnapshot()
 })
