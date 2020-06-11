@@ -1,6 +1,7 @@
-import { createStore, combineReducers} from 'redux'
+import { createStore, combineReducers, applyMiddleware} from 'redux'
 import contractsReducer from '../reducers/contracts'
 import filtersReducer from '../reducers/filters'
+import thunk from 'redux-thunk'
 
 export default ()=>{
     // Creating app store
@@ -8,7 +9,9 @@ export default ()=>{
         combineReducers({
            contracts : contractsReducer,
            filters : filtersReducer 
-        }),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        }),
+        applyMiddleware(thunk)
+        //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 return store
 }

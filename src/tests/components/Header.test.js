@@ -1,15 +1,13 @@
 import React from'react'
-//import ReactShallowRenderer from 'react-test-renderer/shallow'
 import Header from '../../components/Header'
+import { shallow } from 'enzyme'
 
-import ShallowRenderer from 'react-test-renderer/shallow'
+
 
 
 
 test('Should render Header Correctly',() => {
+    const wrapper = shallow(<Header />)
+    expect(wrapper).toMatchSnapshot()
 
-    const renderer = new ShallowRenderer()
-    renderer.render(<Header />)
-    const result = renderer.getRenderOutput()
-    expect(result).toMatchSnapshot()
 })

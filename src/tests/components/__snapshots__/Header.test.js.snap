@@ -5,24 +5,24 @@ exports[`Should render Header Correctly 1`] = `
   <h1>
     Contract Database
   </h1>
-  <Unknown
+  <NavLink
     activeClassName="is-active"
     exact={true}
     to="/"
   >
     Home
-  </Unknown>
-  <Unknown
+  </NavLink>
+  <NavLink
     activeClassName="is-active"
     to="/create"
   >
     Add Contract
-  </Unknown>
-  <Unknown
+  </NavLink>
+  <NavLink
     activeClassName="is-active"
     to="/help"
   >
     Help Pgae
-  </Unknown>
+  </NavLink>
 </header>
 `;

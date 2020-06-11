@@ -1,24 +1,34 @@
 // This file is for the actions generators for the contracts
 import { v4 as uuidv4 } from 'uuid'
+import database from '../firebase/firebase'
 
 // Function to Add Contract
-export const addContract = ({
-    name ='',
-    date= undefined,
-    amount=0,
-    received=[],
-    left=0
-}={})=>({
+export const addContract = (contract)=>({
 type : 'ADD_CONTRACT',
-contracts:{
-    id: uuidv4() ,
-    name,
-    date,
-    amount,
-    received,
-    left
-}
+contract
 })
+
+
+export const startAddContract = (contractData = {}) => {
+    return (dispatch) => {
+        const {
+            name ='',
+            date= 0,
+            amount=0,
+            received=0,
+            left=0
+        } = contractData
+
+        const contract = {name, date,amount,received,left}
+        database.ref('Contracts').push(contract).then((ref) => {
+            dispatch(addContract({
+                id: ref.key,
+                ...contract
+            }))
+        })
+    }
+}
+
 
 // Function to Remove Contract
 

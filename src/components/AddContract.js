@@ -1,22 +1,30 @@
 import React from 'react';
 import ContractForm from './ContractForm';
 import { connect } from 'react-redux'
-import { addContract } from '../actions/contracts';
+import { startAddContract } from '../actions/contracts';
+
+export class AddContract extends React.Component {
+  onSubmit = (contract) => {
+    this.props.startAddContract(contract)
+    this.props.history.push('/')
+  }
+  render() {
+    return (
+      <div>
+      <h3>Contracts Form</h3>
+       <ContractForm
+          onSubmit={this.onSubmit}
+       />
+       </div>
+    )
+  }
+
+}
 
 
-const AddContract = (props)=> (
-    <div>
-       <h3>Contracts Form</h3>
-        <ContractForm 
-          onSubmit ={(contract)=>{
-            props.dispatch(addContract(contract))
-            alert('Contract is Submitted')
-            props.history.push('/')
-          }}
-        
-        />
-        </div>
-)
+const mapDispatchToProps = (dispatch) => ({
+  startAddContract : (contract) => dispatch(startAddContract(contract))
+})
 
 
-export default connect()(AddContract)
+export default connect(undefined,mapDispatchToProps)(AddContract)

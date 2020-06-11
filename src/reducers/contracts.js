@@ -7,7 +7,7 @@ const contractsReducer = (state = contractsReducerDefaultState , action)=> {
         case 'ADD_CONTRACT' :
             return [
                 ...state,
-                action.contracts
+                action.contract
             ]
         case 'REMOVE_CONTRACT':
             return state.filter(({id})=> id !== action.id)
