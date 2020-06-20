@@ -6,7 +6,7 @@ import { startAddContract } from '../actions/contracts';
 export class AddContract extends React.Component {
   onSubmit = (contract) => {
     this.props.startAddContract(contract)
-    this.props.history.push('/')
+    this.props.history.push('/dashboard')
   }
   render() {
     return (

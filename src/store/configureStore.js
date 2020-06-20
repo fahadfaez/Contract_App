@@ -1,17 +1,22 @@
 import { createStore, combineReducers, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
 import contractsReducer from '../reducers/contracts'
 import filtersReducer from '../reducers/filters'
-import thunk from 'redux-thunk'
+import authReducer from '../reducers/auth'
+
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default ()=>{
     // Creating app store
     const store = createStore(
         combineReducers({
            contracts : contractsReducer,
-           filters : filtersReducer 
+           filters : filtersReducer,
+           auth : authReducer
         }),
-        applyMiddleware(thunk)
-        //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        composeEnhancers(applyMiddleware(thunk))
+        
     )
 return store
 }

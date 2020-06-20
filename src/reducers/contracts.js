@@ -22,6 +22,9 @@ const contractsReducer = (state = contractsReducerDefaultState , action)=> {
                     return contract
                 }
             })
+        case 'SET_CONTRACTS':
+            return action.contracts
+
         default :
             return state
     }

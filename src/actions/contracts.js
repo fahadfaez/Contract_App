@@ -10,7 +10,8 @@ contract
 
 
 export const startAddContract = (contractData = {}) => {
-    return (dispatch) => {
+    return (dispatch,getState) => {
+        const uid = getState().auth.uid
         const {
             name ='',
             date= 0,
@@ -20,7 +21,7 @@ export const startAddContract = (contractData = {}) => {
         } = contractData
 
         const contract = {name, date,amount,received,left}
-        database.ref('Contracts').push(contract).then((ref) => {
+        database.ref(`users/${uid}/contracts`).push(contract).then((ref) => {
             dispatch(addContract({
                 id: ref.key,
                 ...contract
@@ -37,6 +38,16 @@ type : 'REMOVE_CONTRACT',
 id
 })
 
+export const startRemoveContract = ({id}={}) => {
+    return(dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/contracts/${id}`).remove().then(()=>{
+            dispatch(removeContract({id}))
+        })
+    }
+    
+}
+
 // Editing a contract
 
 export const editContract = (id,updates)=> ({
@@ -44,3 +55,39 @@ type: 'EDIT_CONTRACT',
 id,
 updates
 })
+
+// Create startEditContract Function
+
+export const startEditContract = (id,updates) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/contracts/${id}`).update(updates).then(()=>{
+            dispatch(editContract(id, updates))
+        })
+    }
+}
+
+
+// SET_CONTRACTS
+export const setContracts = (contracts) => ({
+    type : 'SET_CONTRACTS',
+    contracts
+})
+
+
+export const startSetContracts = () => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/contracts`).once('value').then((snapshot)=>{
+            const contracts =[]
+            
+            snapshot.forEach((childSnapshot)=> {
+                contracts.push({
+                    id : childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+            })
+            dispatch(setContracts(contracts))
+        })
+    }
+}
