@@ -58,13 +58,13 @@ export default class ContractForm extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}   
-                <form onSubmit={this.onSubmit}>
+                <form className="form" onSubmit={this.onSubmit}>
+                {this.state.error && <p className="form__error">{this.state.error}</p>}
                   <label htmlFor="contractName" >Contract Name :  </label>
                   <input
                     type="text"
                     id = "contractName"
+                    className="text-input"
                     placeholder="Contract Name"
                     autoFocus
                     value = {this.state.name}
@@ -73,6 +73,7 @@ export default class ContractForm extends React.Component {
                   <input
                     type="text"
                     placeholder ="Contract Value"
+                    className="text-input"
                     value ={this.state.amount}
                     onChange ={this.onAmountChange}
                  />
@@ -88,11 +89,14 @@ export default class ContractForm extends React.Component {
                  <input
                     type="number"
                     placeholder = "Received"
+                    className="text-input"
                  
                  />
-                 <button >Add Contract</button>
+                 <div>
+                   <button className="button" >Save Contract</button>
+                 </div>
+                 
                 </form>
-            </div>
         )
     }
 }

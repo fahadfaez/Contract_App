@@ -11,10 +11,17 @@ export class AddContract extends React.Component {
   render() {
     return (
       <div>
-      <h3>Contracts Form</h3>
-       <ContractForm
+        <div className="page-header">
+          <div className="content-container">
+             <h1 className="page-header__title">Contracts Form</h1>
+          </div>
+         </div>
+      <div className="content-container">
+          <ContractForm
           onSubmit={this.onSubmit}
-       />
+      />
+      </div>
+      
        </div>
     )
   }

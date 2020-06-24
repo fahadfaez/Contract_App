@@ -1,0 +1,23 @@
+.box-layout {
+align-items: center;    
+background-image: url("https://d20aeo683mqd6t.cloudfront.net/articles/title_images/000/038/943/original/pixta_43064884_S.jpg?2019&d=750x400");
+background-size: cover;
+display: flex;
+height: 100vh;
+justify-content: center;
+width: 100wh;
+}
+
+.box-layout__box {
+    background: fade-out($color: #c7d5e4, $amount: 0.50);
+    border-radius: 3px;
+    text-align: center;
+    width: 25rem;
+    padding: $l-size $m-size;
+}
+
+.box-layout__title {
+    margin: 0 0 $m-size 0;
+    line-height: 1 ;
+    
+}
